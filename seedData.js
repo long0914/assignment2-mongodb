@@ -1,14 +1,14 @@
-// const faker = require('faker');
+// const faker = require('@faker-js/faker');
 
 // function generateProducts(numProducts) {
 //   const products = [];
 
 //   for (let i = 0; i < numProducts; i++) {
 //     const product = {
-//       name: faker.commerce.productName(),
-//       description: faker.lorem.sentences(),
-//       price: faker.commerce.price(),
-//       category: faker.commerce.department(),
+//       name: faker.commerce.productName(), // Correct method name
+//       description: faker.lorem.sentences(), // Correct method name
+//       price: faker.commerce.price(), // Correct method name
+//       category: faker.commerce.department(), // Correct method name
 //     };
 //     products.push(product);
 //   }

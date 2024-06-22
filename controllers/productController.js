@@ -32,6 +32,7 @@ exports.createProduct = async (req, res) => {
     name: req.body.name,
     description: req.body.description,
     price: req.body.price,
+    quantity: req.body.quantity,
     category: req.body.category,
     // Add other fields from the request body
   });
@@ -68,15 +69,15 @@ exports.updateProduct = async (req, res) => {
 // Delete a product
 exports.deleteProduct = async (req, res) => {
   try {
-    const product = await Product.findById(req.params.id);
-    if (!product) {
+    const result = await Product.findByIdAndDelete(req.params.id);
+    if (!result) {
       return res.status(404).json({ message: 'Product not found' });
     }
-
-    await product.remove();
+    console.log('Product found and removed');
     res.json({ message: 'Product removed' });
   } catch (err) {
     res.status(500).json({ message: err.message });
+    console.log(err);
   }
 };
 
@@ -95,6 +96,7 @@ exports.searchProducts = async (req, res) => {
   const keyword = req.query.name;
   if (!keyword) {
     return res.status(400).json({ message: 'Please provide a search keyword' });
+    console.log('Please provide a search keyword');
   }
 
   try {
@@ -104,5 +106,6 @@ exports.searchProducts = async (req, res) => {
     res.json(products);
   } catch (err) {
     res.status(500).json({ message: err.message });
+    console.log(err);
   }
 };
